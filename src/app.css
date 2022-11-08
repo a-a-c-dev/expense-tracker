@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=David+Libre:wght@500;700&display=swap');
+
+:root {
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  direction: rtl;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(to right,#1d2121, #6f797e, #1d2121);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0.2em;
+  font-family: 'David Libre', serif;
+  color: #fff;
+
+}
+#root{
+  width: 100%;
+  padding: 0 1em;
+}
+
+.container {
+  margin: 30px auto;
+  max-width: 350px;
+}
+
+
+h1 {
+  letter-spacing: 1px;
+  margin: 0;
+  text-align: center  ;
+  text-transform: capitalize;
+  padding: 1em 0 0;
+  font-size: 1.8em;
+}
+h2,h4{
+    text-align: center;
+    text-transform: capitalize;
+    margin: 0;
+}
+h3 {
+  padding-bottom: 10px;
+  margin: 20px 0 10px;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 1.4em;
+}
+
+
+
+.inc-exp-container {
+  
+  background-color: #76797782;
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.inc-exp-container > div {
+  flex: 1;
+  text-align: center;
+}
+
+.inc-exp-container > div:first-of-type {
+  border-left: 1px solid #dedede;
+}
+
+.money {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin: 5px 0;
+  font-weight: 700;
+}
+
+.plus {
+  color: #53ff9a;
+}
+
+.minus {
+  color: #a51010;
+}
+label {
+  display: inline-block;
+  margin: 10px 0;
+}
+.add-transaction-container form{
+  display: flex;
+  flex-direction: column;
+}
+.inputs-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.input-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-container >  input[type='text'],
+.input-container > input[type='number'] {
+  border: none;
+  outline: none ;
+  border-radius: 2px;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  direction: auto;
+  background-color: #76797782;
+  color: #dedede;
+}
+
+.input-container > input[type='number'] ::-webkit-outer-spin-button,
+.input-container > input[type='number'] ::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: #76797782;
+  box-shadow: var(--box-shadow);
+  color: #fff;
+  border: 0;
+  display: block;
+  font-size: 16px;
+  margin: 20px auto;
+  padding: 10px;
+  width: 100%;
+}:disabled{
+  opacity: .5;
+}
+
+
+.btn:focus,
+.delete-btn:focus {
+  outline: 0;
+}
+
+.transaction-list-container{
+  display: flex;
+  flex-direction: column;
+}
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.list li {
+  background-color: #76797782;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.list li.plus {
+  border-right: 5px solid #53ff9a;;
+}
+
+.list li.minus {
+  border-right: 5px solid #a51010;
+}
+
+.delete-btn {
+  cursor: pointer;
+  background-color: #c60d0d;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.list li:hover .delete-btn {
+  opacity: 1;
+}
+.currency-container{
+  text-align: center;
+  background-color: #76797782;
+  color: #fff;
+  position: relative;
+  padding: 25px 0;
+}
+
+.currency-container label{  
+  margin:  0;
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translate(0,-50%);
+}
+
+.currency-container select{  
+  border: none;  
+  font-size: 1em;
+  outline: none;
+  background: none;
+  max-width: 150px;
+  color: #fff;
+  border:0 ;
+  background: transparent;
+  position: absolute;
+  left: 1em;
+  top: 50%;
+  width: 50%;
+  transform: translate(0,-50%);
+  background: #52526900;
+}
+
+.currency-container select option{
+  margin: 40px;
+  width: 100%;
+  
+}
+select[multiple] option{
+  background: #52526900!important;
+}
+.error{
+  color:  #c60d0d;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+
+
+@media screen and (min-width: 769px)  {
+
+  .container {
+    max-width: 550px;
+  }
+  
+  
+}
