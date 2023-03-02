@@ -11,7 +11,6 @@ const storageCurrency = LocalStorageManager.get("currency")??'$';
 const initialState = {
     currency: storageCurrency,
     transactions:storageTransaction
-
 }
 
 
@@ -21,9 +20,6 @@ export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({children}) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
-
-
-    
     useEffect(()=>{
         LocalStorageManager.set("transactions", JSON.stringify(state.transactions));
     },[state.transactions])
@@ -37,22 +33,18 @@ export const GlobalProvider = ({children}) => {
             payload:id
         });
     }
-
-
     function addTransaction(transaction) {
         dispatch({
             type:'ADD_TRANSACTION',
             payload:transaction
         });
     }
-    
     function changeCurrency(currency) {
         dispatch({
             type:'CHANGE_CURRENCY',
             payload:currency
         });
     }
-
     return(<GlobalContext.Provider value={{
                 transactions:state.transactions,
                 currency:state.currency,

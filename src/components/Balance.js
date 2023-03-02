@@ -8,7 +8,11 @@ export const Balance =React.memo(() => {
     return(
         <>
             <h3 >המאזן שלך</h3>
-            <h1 className={total<0?'minus':'plus'}>{total<0?`${Number(total).toFixed(2)} ${currency}`:`${currency} ${Number(total).toFixed(2)}`}</h1>
+            <h1              
+                data-test="user-balance"
+                className={total<0?'minus':'plus'}>
+                    {total<0?`${Number(total).toFixed(2)} ${currency}`:`${currency} ${Number(total).toFixed(2)}`}
+            </h1>
         </>
     )
 })

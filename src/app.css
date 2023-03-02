@@ -238,10 +238,8 @@ input[type=number] {
 .currency-container select option{
   margin: 40px;
   width: 100%;
+  background-color: #808080!important;
   
-}
-select[multiple] option{
-  background: #52526900!important;
 }
 .error{
   color:  #c60d0d;
