@@ -1,10 +1,10 @@
 import React, {useContext,useMemo } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import { GlobalContext, AppState } from '../context/GlobalState';
 import {expenseCalculator,incomeCalculator } from '../utils/calculator';
 
 
 export const IncomeExpenses = () => {
-    const {transactions,currency} = useContext(GlobalContext)
+    const {transactions,currency} = useContext<AppState>(GlobalContext)
     const income = useMemo(()=> incomeCalculator(transactions,currency),[transactions,currency]);
     const expense = useMemo(()=> expenseCalculator(transactions,currency),[transactions,currency]);
 

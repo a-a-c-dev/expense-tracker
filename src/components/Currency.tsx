@@ -1,14 +1,13 @@
 import React,{useEffect,useState,useContext} from 'react';
-import { GlobalContext } from '../context/GlobalState';
-
+import { GlobalContext ,AppContextType} from '../context/GlobalState';
 
 
 
 export  const Currency =React.memo(() => {
-    const { changeCurrency  ,currency} = useContext(GlobalContext);
+    const { changeCurrency  ,currency} = useContext<AppContextType>(GlobalContext as React.Context<AppContextType>);
     const [selectionValue,setSelectionValue] = useState(currency);
 
-    const handleSelectChange = event => {
+    const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const {  value } = event.target;
         setSelectionValue(value);
     };
@@ -20,7 +19,7 @@ export  const Currency =React.memo(() => {
     return (               
         <div className="currency-container"> 
             <label htmlFor="currency-choice">בחר מטבע:</label>
-            <select  id="currency-list" defaultValue={selectionValue} onChange={handleSelectChange}>
+            <select  id="currency-list" defaultValue={selectionValue} onChange={e=> handleSelectChange(e)}>
                 <option value="$">$(US-Dollar)</option>
                 <option  value="₪">₪(Israeli Shekel)</option>
                 <option value="€">€(Euro)</option>

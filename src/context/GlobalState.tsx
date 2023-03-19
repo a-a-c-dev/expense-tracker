@@ -1,4 +1,4 @@
-import React,{ createContext, useEffect, useReducer} from 'react';
+import React,{ createContext, useEffect, useReducer , ReactNode} from 'react';
 import AppReducer from './AppReducer';
 import LocalStorageManager from "../utils/LocalStorageManager";
 
@@ -13,12 +13,27 @@ const initialState = {
     transactions:storageTransaction
 }
 
+export interface TransactionType {
+    id:number
+    text:string
+    amount:number
+    currency:string
+}
+export type AppState = typeof initialState
 
-export const GlobalContext = createContext(initialState);
+export interface AppContextType {
+    transactions: TransactionType[],
+    currency: string,
+    deleteTransaction: (id: number) => void,
+    addTransaction: (transaction: TransactionType) => void,
+    changeCurrency: (currency: string) => void
+}
+
+export const GlobalContext = createContext<AppState|AppContextType>(initialState);
 
 
 
-export const GlobalProvider = ({children}) => {
+export const GlobalProvider = ({children}:{children : ReactNode}) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
     useEffect(()=>{
         LocalStorageManager.set("transactions", JSON.stringify(state.transactions));
@@ -27,19 +42,19 @@ export const GlobalProvider = ({children}) => {
         LocalStorageManager.set("currency", state.currency);
     },[state.currency])
 
-    function deleteTransaction(id) {
+    function deleteTransaction(id:number) {
         dispatch({
             type:'DELETE_TRANSACTION',
             payload:id
         });
     }
-    function addTransaction(transaction) {
+    function addTransaction(transaction:TransactionType) {
         dispatch({
             type:'ADD_TRANSACTION',
             payload:transaction
         });
     }
-    function changeCurrency(currency) {
+    function changeCurrency(currency:string) {
         dispatch({
             type:'CHANGE_CURRENCY',
             payload:currency

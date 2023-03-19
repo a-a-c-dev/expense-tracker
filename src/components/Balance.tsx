@@ -1,9 +1,9 @@
 import React, { useContext,useMemo } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import { GlobalContext, AppState } from '../context/GlobalState';
 import {totalCalculator } from '../utils/calculator';
 
 export const Balance =React.memo(() => {
-    const {currency, transactions } = useContext(GlobalContext);
+    const {currency, transactions } = useContext<AppState>(GlobalContext);
     const total =useMemo(()=> totalCalculator(transactions,currency),[transactions,currency]);
     return(
         <>

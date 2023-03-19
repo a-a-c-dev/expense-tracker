@@ -1,6 +1,13 @@
 import React from 'react';
 
-export const AmountInput =({amount, validAmount, amountRequired, handleChange})=>{
+interface AmountInputProps {
+    amount:number,
+    validAmount?:string,
+    amountRequired?:string,
+    handleChange:(name:string , value:string)=>void
+}
+
+export const AmountInput =({amount, validAmount, amountRequired, handleChange}:AmountInputProps)=>{
     return(
         <div className='input-container'>
             <label htmlFor="amount">סכום</label>

@@ -1,6 +1,13 @@
 import React from 'react';
 
-export const TextInput =({text, validText, textRequired, handleChange})=>{
+interface TextInputProps {
+    text:string,
+    validText?:string,
+    textRequired?:string,
+    handleChange:(name:string, value:string)=>void
+}
+
+export const TextInput =({text, validText, textRequired, handleChange}:TextInputProps)=>{
     return(
         <div className='input-container'>
             <label htmlFor="text">שם עסקה</label>
